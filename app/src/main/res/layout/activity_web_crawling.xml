@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<android.support.constraint.ConstraintLayout
+    tools:layout_editor_absoluteY="81dp"
+    tools:context=".WebCrawlingActivity"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:id="@+id/crawlingResult"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:scrollbars="vertical"
+        android:autoLink="web"
+        android:text=""/>
+    <!--버튼연동시 textview에 부착app:layout_constraintTop_toBottomOf="@+id/button"-->
+    <!--
+    <Button
+        android:id="@+id/button"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="데이터가져오기"
+        app:layout_constraintTop_toTopOf="parent"/>
+        -->
+</android.support.constraint.ConstraintLayout>
