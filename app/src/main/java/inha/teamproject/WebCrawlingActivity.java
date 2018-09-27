@@ -1,10 +1,10 @@
 package inha.teamproject;
 
-//09/10 서머스쿨때 구현했던 웹 크롤링 재현중...
 /*참고자료들
  * jsoup 파싱 자료
  * https://www.journaldev.com/7207/google-search-from-java-program-example*/
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,6 +33,7 @@ public class WebCrawlingActivity extends AppCompatActivity {
     private String htmlPageUrl = ""; //파싱할 홈페이지의 URL주소
     private TextView textviewHtmlDocument;
     private String htmlContentInStringFormat="";
+    private String searchTerm = "";  //여기에다 검색할 키워드 조합을 집어넣습니다
 
     int cnt = 0;
 
@@ -40,6 +41,10 @@ public class WebCrawlingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_crawling);
+
+        //NextActivity_add.kt 로부터 검색할 키워드 문자열을 가져옴
+        Intent intent = getIntent();
+        searchTerm = intent.getStringExtra("search_value");
 
         textviewHtmlDocument = (TextView)findViewById(R.id.crawlingResult);
         textviewHtmlDocument.setMovementMethod(new ScrollingMovementMethod());
@@ -73,7 +78,6 @@ public class WebCrawlingActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                String searchTerm = "hanbit";              //여기에다 검색할 키워드 조합을 집어넣습니다
                 int num = 5;                            //검색결과갯수
                 htmlPageUrl = GOOGLE_SEARCH_URL + "?q=" + searchTerm+"&num="+num;
                 Document doc = Jsoup.connect(htmlPageUrl).userAgent("Mozilla/5.0").get();
